@@ -1,31 +1,23 @@
-import React, {useState, useEffect} from 'react';
-import logo from "./logo.svg";
+import React, { Component} from 'react';
 import "./App.css";
 import './index.js';
+import Chart from "./Chart";
+import { Container, Navbar } from 'react-bootstrap';
+import { json } from 'd3';
 
-
-function App() {
-    const [dashboard, setDashboard] = useState(false);
-    useEffect(() => {
-        getDashboard();
-    }, []);
-    function getDashboard() {
-        fetch('http://localhost:3001')
-            .then(response => {
-                return response.text();
-            })
-            .then(data => {
-                setDashboard(data);
-            });
+class App extends Component {
+    render() {
+        return (
+            <div className="chart">
+                <Navbar bg="gray">
+                    <Navbar.Brand>API Dashboard</Navbar.Brand>
+                </Navbar>
+                <Container>
+                    <Chart/>
+                </Container>
+            </div>
+        );
     }
-
-    return (
-        <div>
-            {dashboard ? dashboard : 'There is dashboard data available'}
-            <br />
-            <button onClick={getDashboard}>Get dashboard</button>
-        </div>
-    );
 }
 
 export default App;

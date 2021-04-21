@@ -3,7 +3,6 @@ const path = require('path');
 const PORT = process.env.PORT || 3001;
 const app = express();
 const dashboard_model = require('../dashboard_model.js');
-const d3 = require("d3");
 
 app.use(express.json());
 app.use(function (req, res, next) {
@@ -13,7 +12,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.get('/', (req, res) => {
+app.get('/apidashboard', (req, res) => {
     dashboard_model.getDashboard()
         .then(response => {
             res.status(200).send(response);
@@ -21,6 +20,23 @@ app.get('/', (req, res) => {
         .catch(error => {
             res.status(500).send(error);
         })
+});
+
+app.get('/apidashboard', (req, res) => {
+    dashboard_model.getDashboard()
+        .then(response = {
+        http_header : req.query.http_header,
+        api_uri : req.query.api_uri,
+        status_code_response : req.query.status_code_response,
+        timestamp : req.query.timestamp
+    });
+    res.send(response);
+    var fs = require('fs');
+    fs.writeFile('jsonData.json', JSON.stringify(response), function(err) {
+        if (err) {
+            console.log('Error found : ' + err);
+        }
+    })
 });
 
 

@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import D3StackedBarChart from "./D3StackedBarChart";
+import Chart from "./Chart";
+import { json } from 'd3';
 
 
 ReactDOM.render(<App />, document.getElementById('root'));

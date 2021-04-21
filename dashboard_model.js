@@ -1,3 +1,4 @@
+pg = require("pg");
 pgp = require("pg-promise");
 const Pool = require('pg').Pool;
 const pool = new Pool({
@@ -9,6 +10,7 @@ const pool = new Pool({
 });
 
 /*
+// DATABASE_URL=postgres://{db_username}:{db_password}@{host}:{port}/{db_name}
 postgres returns dashboard results as JSON
 Need to figure out how to route or move it to named JS file
 Present the data in D3.js
@@ -20,10 +22,10 @@ const getDashboard = () => {
             if (error) {
                  console.log('Error executing query', reject (error));
             }
-            (resolve(results.rows));
+            resolve(results.rows);
         });
     })
-};
+}
 
 module.exports = {
     getDashboard,
