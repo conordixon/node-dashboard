@@ -22,17 +22,10 @@ app.get('/apidashboard', (req, res) => {
         })
 });
 
-app.get('/apidashboard', (req, res) => {
-    dashboard_model.getDashboard()
-        .then(response = {
-        http_header : req.query.http_header,
-        api_uri : req.query.api_uri,
-        status_code_response : req.query.status_code_response,
-        timestamp : req.query.timestamp
-    });
-    res.send(response);
-    var fs = require('fs');
-    fs.writeFile('jsonData.json', JSON.stringify(response), function(err) {
+        dashboard_model.getDashboard()
+        .then(response => {
+        var fs = require('fs');
+        fs.writeFile('jsonData.json', JSON.stringify(response), function(err) {
         if (err) {
             console.log('Error found : ' + err);
         }

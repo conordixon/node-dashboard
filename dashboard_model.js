@@ -22,7 +22,7 @@ const getDashboard = () => {
             if (error) {
                  console.log('Error executing query', reject (error));
             }
-            resolve(results.rows);
+            console.log(resolve(results.rows));
         });
     })
 }
