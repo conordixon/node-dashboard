@@ -9,21 +9,7 @@ router.get('/api', function(req, res, next) {
 
 
 router.get('/apidashboard', function(req, res, next) {
-    res = {
-        http_header : req.query.http_header,
-        api_uri : req.query.api_uri,
-        status_code_response : req.query.status_code_response,
-        timestamp : req.query.timestamp
-    };
-    console.log(res);
-
-    fs.writeFile('jsonData.json', JSON.stringify(res), function(err) {
-        if (err) {
-            console.log('Error found : ' + err.message);
-        } else {
-            fs.writeFile();
-        }
-    });
+    console.log(res.send('respond with a resource'));
 });
 
 //get apidashboard

@@ -25,13 +25,12 @@ app.get('/apidashboard', (req, res) => {
         dashboard_model.getDashboard()
         .then(response => {
         var fs = require('fs');
-        fs.writeFile('jsonData.json', JSON.stringify(response), function(err) {
+        fs.writeFile('client/public/data/jsonData.json', JSON.stringify(response), function(err) {
         if (err) {
             console.log('Error found : ' + err);
         }
     })
 });
-
 
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
