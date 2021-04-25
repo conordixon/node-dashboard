@@ -12,7 +12,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.get('/', (req, res) => {
+app.get('/apidashboard', (req, res) => {
     dashboard_model.getDashboard()
         .then(response => {
             res.status(200).send(response);
@@ -22,9 +22,18 @@ app.get('/', (req, res) => {
         })
 });
 
+        dashboard_model.getDashboard()
+        .then(response => {
+        var fs = require('fs');
+        fs.writeFile('client/public/data/jsonData.json', JSON.stringify(response), function(err) {
+        if (err) {
+            console.log('Error found : ' + err);
+        }
+    })
+});
 
 app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!" });
+    res.json({ message: "Hello world from the server!" });
 });
 
 app.listen(PORT, () => {
@@ -33,11 +42,6 @@ app.listen(PORT, () => {
 
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, '../client/build')));
-
-// Handle GET requests to /api route
-app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!" });
-});
 
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
