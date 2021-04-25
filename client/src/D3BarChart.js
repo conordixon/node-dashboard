@@ -1,7 +1,8 @@
 import * as d3 from 'd3';
 
 /*
-Four columns
+Four columns - http_header, api_uri, status_code_response and timestamp
+
 http_header - "GET" or "POST"
 
 api_uri -
@@ -26,26 +27,48 @@ formatYear = d3.timeFormat("%Y");
 
 */
 
+//const jsonFile = ("https://raw.githubusercontent.com/conordixon/node-dashboard/feature/Implement-D3-React-Components/client/public/data/jsonData.json"
 
-export default class D3BarChart {
+
+class D3BarChart {
     constructor(element) {
-        const svg = d3.select(element)
-            .append("svg")
-            .attr("http_header", 500)
-            .attr("api_uri", 500)
-            .attr("status_code_response", 500)
-            .attr("timestamp", 500);
+        // const table = d3.select(element)
+        // .append("table")
+        //     .attr("http_header", 500)
+        //     .attr("api_uri", 500)
+        //     .attr("status_code_response", 500)
+        //     .attr("timestamp", 500);
 
-        d3.json("https://raw.githubusercontent.com/conordixon/node-dashboard/feature/Implement-D3-React-Components/client/public/data/jsonData.json") .then(data => {
+        d3.json("https://raw.githubusercontent.com/conordixon/node-dashboard/feature/Implement-D3-React-Components/client/public/data/jsonData.json")
+            .then(data => {
+
+            //const rects = table.selectAll("rect") .data(data)
             console.log(data);
+        });
 
-            const stack = d3.stack()
-                .keys(["http_header", "api_uri", "status_code_response", "timestamp"])
-                .order(d3.stackOrderNone)
-                .offset(d3.stackOffsetNone);
+            // table.append('tbody')
+            //     .appendMany(movies, 'tr')
+            //     .appendMany(td_data, 'td')
+            //     .html(d3.f('html'))
+            //     .attr('class', d3.f('cl'));
 
-            const series = stack(data);
-
-        })
-    }
 }
+
+
+}
+
+export default D3BarChart;
+
+
+
+
+/*
+*  <Navbar bg="gray">
+                    <Navbar.Brand>API Dashboard</Navbar.Brand>
+                </Navbar>
+                <Container>
+                    <Row>
+                    </Row>
+                        <Chart/>
+                </Container>
+* */

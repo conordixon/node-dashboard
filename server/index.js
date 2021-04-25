@@ -33,7 +33,7 @@ app.get('/apidashboard', (req, res) => {
 });
 
 app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!" });
+    res.json({ message: "Hello world from the server!" });
 });
 
 app.listen(PORT, () => {
