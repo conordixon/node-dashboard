@@ -20,8 +20,6 @@ class App extends Component {
         d3.json("https://raw.githubusercontent.com/conordixon/node-dashboard/feature/Implement-D3-React-Components/client/public/data/jsonData.json")
             .then(data => this.setState({
                 jsondata: data
-                //const rects = table.selectAll("rect") .data(data)
-                //console.log(data);
 
             }));
 
