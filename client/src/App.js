@@ -3,7 +3,7 @@ import './App.css';
 import './index.js';
 import * as d3 from 'd3';
 import Chart from "./Chart";
-import { Container, Navbar, Row } from 'react-bootstrap';
+import { Container, Navbar, Row, Table } from 'react-bootstrap';
 import { json } from 'd3';
 
 class App extends Component {
@@ -31,10 +31,11 @@ class App extends Component {
 
         return (
             <div className="chart">
-            <Navbar bg="gray">
-            <Navbar.Brand>API Dashboard</Navbar.Brand>
-            </Navbar>
             <Container>
+                <Navbar bg="gray">
+                    <Navbar.Brand>API Dashboard</Navbar.Brand>
+                </Navbar>
+                <Table striped bordered hover variant>
                 <table width class="table">
                 {jsondata.map(m=>
                         <tr>
@@ -53,6 +54,7 @@ class App extends Component {
                         </tr>
                 )}
                 </table>
+                </Table>
             </Container>
             </div>
 
