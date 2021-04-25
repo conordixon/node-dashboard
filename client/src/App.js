@@ -31,14 +31,17 @@ class App extends Component {
 
         return (
             <div className="chart">
+            <Navbar bg="gray">
+            <Navbar.Brand>API Dashboard</Navbar.Brand>
+            </Navbar>
+            <Container>
                 <table width class="table">
                 {jsondata.map(m=>
-
                         <tr>
                             <td width="15%">
                                 {m.http_header}
                             </td>
-                            <td width="60%">
+                                <td width="60%">
                                 <h6>{m.api_uri}</h6>
                             </td>
                             <td width="15%">
@@ -48,10 +51,11 @@ class App extends Component {
                                 {m.timestamp}
                             </td>
                         </tr>
-
                 )}
                 </table>
+            </Container>
             </div>
+
         );
     }
 }

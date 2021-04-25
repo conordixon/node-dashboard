@@ -58,17 +58,3 @@ class D3BarChart {
 }
 
 export default D3BarChart;
-
-
-
-
-/*
-*  <Navbar bg="gray">
-                    <Navbar.Brand>API Dashboard</Navbar.Brand>
-                </Navbar>
-                <Container>
-                    <Row>
-                    </Row>
-                        <Chart/>
-                </Container>
-* */
