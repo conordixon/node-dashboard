@@ -17,7 +17,7 @@ class App extends Component {
             .catch(error => console.log(error));
 
 
-        d3.json("https://raw.githubusercontent.com/conordixon/node-dashboard/feature/Implement-D3-React-Components/client/public/data/jsonData.json")
+        d3.json("https://raw.githubusercontent.com/conordixon/node-dashboard/master/client/public/data/jsonData.json")
             .then(data => this.setState({
                 jsondata: data
 
